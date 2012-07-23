@@ -2,11 +2,28 @@
 
 = Introduction =
 
-mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in IWSON2.  [Workshop program|http://www.iswcs2012.org/images/IWSONII_Program_120828.pdf].  In future the project would be maintained and much more simulation, demonstration of MFM will be done as part of this project.  Contributors please email to me @ premnathkn@ieee.org.
+mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in IWSON2.  [Workshop program#http://www.iswcs2012.org/images/IWSONII_Program_120828.pdf].  In future the project would be maintained and much more simulation, demonstration of MFM will be done as part of this project.  Contributors are welcome!!! please email to me @ premnathkn@ieee.org.
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+*Activities done:*
+#  Code base made available to public (in the current form).
+#  Short Abstract and initial wiki ready.
+
+*Current ongoing activities:*
+#  Introducing MFM algorithm in the tool.
+#  Viewing the MFM iteration results.
+
+*Technology used:*
+#  Primilarly java.
+#  Log4J is used for logging.
+
+*Next steps:*
+*  provide manual development environment configuration.  Until then "just import the project in eclipse with workspace mfm-simulation" and use JDK 1.6.  Run myMFM.java as a Java application.  That's it.
+*  Introduce, integrate Spring & convert all sigletons to sprint services.
+*  Maven integration
+*  Continious integration environment.
+*  Code clarity and checkstyle recommendations.
+*  Much more....  
+
+
