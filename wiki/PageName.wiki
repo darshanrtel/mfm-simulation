@@ -2,7 +2,7 @@
 
 = Introduction =
 
-mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in IWSON2.  [Workshop program#http://www.iswcs2012.org/images/IWSONII_Program_120828.pdf].  In future the project would be maintained and much more simulation, demonstration of MFM will be done as part of this project.  Contributors are welcome!!! please email to me @ premnathkn@ieee.org.
+mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in IWSON2.  Workshop program : http://www.iswcs2012.org/images/IWSONII_Program_120828.pdf.  In future the project would be maintained and much more simulation, demonstration of MFM will be done as part of this project.  Contributors are welcome!!! please email to me @ premnathkn@ieee.org
 
 = Details =
 
@@ -25,5 +25,3 @@ mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in 
 *  Continious integration environment.
 *  Code clarity and checkstyle recommendations.
 *  Much more....  
-
-
