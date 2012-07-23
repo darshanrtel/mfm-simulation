@@ -7,8 +7,8 @@ mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in 
 = Details =
 
 Activities done:
-#Code base made available to public (in the current form).
-#Short Abstract and initial wiki ready.
+ # Code base made available to public (in the current form).
+ # Short Abstract and initial wiki ready.
 
 *Current ongoing activities:*
 #Introducing MFM algorithm in the tool.
