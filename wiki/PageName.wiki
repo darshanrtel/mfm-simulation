@@ -6,7 +6,7 @@ mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in 
 
 = Details =
 
-*Activities done:*
+Activities done:
 # Code base made available to public (in the current form).
 # Short Abstract and initial wiki ready.
 
@@ -19,9 +19,9 @@ mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in 
 # Log4J is used for logging.
 
 *Next steps:*
-*  provide manual development environment configuration.  Until then "just import the project in eclipse with workspace mfm-simulation" and use JDK 1.6.  Run myMFM.java as a Java application.  That's it.
-*  Introduce, integrate Spring & convert all sigletons to sprint services.
-*  Maven integration
-*  Continious integration environment.
-*  Code clarity and checkstyle recommendations.
-*  Much more....  
+* provide manual development environment configuration.  Until then "just import the project in eclipse with workspace mfm-simulation" and use JDK 1.6.  Run myMFM.java as a Java application.  That's it.
+* Introduce, integrate Spring & convert all sigletons to sprint services.
+* Maven integration
+* Continious integration environment.
+* Code clarity and checkstyle recommendations.
+* Much more....  
