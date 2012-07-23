@@ -1,4 +1,4 @@
-#Introduction & activity log
+#summary Introduction & activity logOne-sentence summary of this page.
 
 = Introduction =
 
