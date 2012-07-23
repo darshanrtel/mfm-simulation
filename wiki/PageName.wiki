@@ -1,0 +1,12 @@
+#summary One-sentence summary of this page.
+
+= Introduction =
+
+mfm-simulation project evaluates "Magnetic field model" (MFM) being proposed in IWSON2.  [Workshop program|http://www.iswcs2012.org/images/IWSONII_Program_120828.pdf].  In future the project would be maintained and much more simulation, demonstration of MFM will be done as part of this project.  Contributors please email to me @ premnathkn@ieee.org.
+
+= Details =
+
+Add your content here.  Format your content with:
+  * Text in *bold* or _italic_
+  * Headings, paragraphs, and lists
+  * Automatic links to other wiki pages
