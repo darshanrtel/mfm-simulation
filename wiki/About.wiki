@@ -25,3 +25,11 @@ Activities done:
  * Continious integration environment.
  * Code clarity and checkstyle recommendations.
  * Much more....  
+
+= Using the application =
+ * Activate or click "Define sites" button and arbitarily click on the canvas.
+ * Click on load network button.  We will see the sites on the canvas.
+ * Click "Define cells" button.
+ * Click on load network button.  Will load the cells.
+ * Click on the cell line we could see the cells are selectable.
+ * Now other functionalities are being developed....  Watch here for latest updates.
