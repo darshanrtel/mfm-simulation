@@ -6,8 +6,7 @@ import org.ieee.iwson2.mfm.Application.MFMSimulatorApplication;
 import org.ieee.iwson2.mfm.Application.MFMSimulatorApplicationImpl;
 
 /*
- Copyright 2012 mfm-simulation, contributors acknowledged
- by mfm-simulation project owner.
+ Copyright 2012 mfm-simulation
  
  Licensed under the Apache License, Version 2.0 (the "License");
  you may not use this file except in compliance with the License.
@@ -20,7 +19,6 @@ import org.ieee.iwson2.mfm.Application.MFMSimulatorApplicationImpl;
  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  See the License for the specific language governing permissions and
  limitations under the License.
- contact : premnathkn@gmail.com
 */
 /**
  * 

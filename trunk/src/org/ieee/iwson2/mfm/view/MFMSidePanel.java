@@ -13,6 +13,7 @@ import org.ieee.iwson2.mfm.controller.OperationStates;
 
 public class MFMSidePanel extends JPanel implements OperationStates {
 	private JLabel myOperation;
+
 	public MFMSidePanel(final JLabel definition) {
 		super();
 		myOperation = definition;
@@ -27,7 +28,7 @@ public class MFMSidePanel extends JPanel implements OperationStates {
 		JButton pauseProgressButton = new JButton("Forbid PCI");
 		JButton exitButton = new JButton("Forbid PRACH");
 		JButton showRepelFactor = new JButton("Show Repel factor");
-		JButton clearNetwork = new JButton("Clear Network");		
+		JButton clearNetwork = new JButton("Clear Network");
 		this.add(siteButton);
 		this.add(cellButton);
 		this.add(showCellECR);
@@ -35,11 +36,12 @@ public class MFMSidePanel extends JPanel implements OperationStates {
 		this.add(exitButton);
 		this.add(showRepelFactor);
 		this.add(clearNetwork);
-		init_ActionListeners(siteButton, cellButton, clearNetwork);
+		init_ActionListeners(siteButton, cellButton, showCellECR, clearNetwork);
 	}
 
 	private void init_ActionListeners(final JButton siteButton,
-			final JButton cellButton, final JButton clearNetwork) {
+			final JButton cellButton, final JButton showCellECR,
+			final JButton clearNetwork) {
 		siteButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -62,6 +64,14 @@ public class MFMSidePanel extends JPanel implements OperationStates {
 				OperationChangeController.getOperationChangeNotifier()
 						.notifyOperationChange(Operation_States.CLEAR);
 				myOperation.setText("Clear Network");
+			}
+		});
+		showCellECR.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				OperationChangeController.getOperationChangeNotifier()
+						.notifyOperationChange(Operation_States.ECR);
+				myOperation.setText("Show ECR of Network");
 			}
 		});
 	}

@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
 
 import javax.swing.JLabel;
 
@@ -27,7 +28,7 @@ public class MFMCanvas extends Canvas {
 	private static final short CELL_LINE_WIDTH = 5;
 
 	private static MFMCanvas myMFMCanvas = null;
-
+	
 	float dashes[] = { 5f, 5f };
 
 	BasicStroke stroke;
@@ -74,26 +75,31 @@ public class MFMCanvas extends Canvas {
 		}
 		Shape circle = new Ellipse2D.Float(mfmSites.getX1(), mfmSites.getY1(),
 				10.0f, 8.0f);
-		paint(myMFMCanvas.getGraphics(), circle, Color.MAGENTA);
+		paint(myMFMCanvas.getGraphics(), circle, Color.DARK_GRAY, NetworkElementType.SITE);
 		myMFMCanvas.repaint();
 	}
 
-	public void paint(final Graphics g, final Shape requestedShape, final Color paintColor) {
+	public void paint(final Graphics g, final Shape requestedShape,
+			final Color paintColor, final NetworkElementType drawType) {
 		Graphics2D ga = (Graphics2D) g;
 		ga.setPaint(paintColor);
-		if (requestedShape instanceof Ellipse2D) {
+		if (drawType == NetworkElementType.SITE) {
 			ga.draw(requestedShape);
 			ga.fill(requestedShape);
 			MFMCanvasModel.getMFMCanvas().setMySiteCircles(
 					(Ellipse2D) requestedShape);
 		} else if (requestedShape instanceof Line2D) {
-			ga.setStroke(new BasicStroke(CELL_LINE_WIDTH)); // line thickness
+			if(drawType == NetworkElementType.CELL) {
+				ga.setStroke(new BasicStroke(CELL_LINE_WIDTH)); // line thickness
+			} else {
+				ga.setStroke(new BasicStroke(2)); // line thickness
+			}
 			ga.drawLine((int) ((Line2D) requestedShape).getX1(),
 					(int) ((Line2D) requestedShape).getY1(),
 					(int) ((Line2D) requestedShape).getX2(),
 					(int) ((Line2D) requestedShape).getY2());
 			MFMCanvasModel.getMFMCanvas().setMyCellLines(
-					(Line2D) requestedShape);
+					(Line2D) requestedShape, drawType);
 		}
 	}
 
@@ -107,9 +113,9 @@ public class MFMCanvas extends Canvas {
 			throw new Exception("Site not found!!!");
 		}
 		final float siteX1 = site.getX1() + 5; // +5 is to take to the centre of
-												// eclipse
+												// eclipse (site circle)
 		final float siteY1 = site.getY1() + 2; // +2 is to take to the centre of
-												// eclipse
+												// eclipse (site circle)
 		final short bearing = mfmCell.getMyBearing();
 		float siteX2 = 0;
 		float siteY2 = 0;
@@ -118,18 +124,34 @@ public class MFMCanvas extends Canvas {
 		siteX2 = (int) Math.round(siteX1 + r * Math.cos(bearing));
 		siteY2 = (int) Math.round(siteY1 + r * Math.sin(bearing));
 		Shape line = new Line2D.Double(siteX1, siteY1, siteX2, siteY2);
-		paint(myMFMCanvas.getGraphics(), line, Color.MAGENTA);
+		paint(myMFMCanvas.getGraphics(), line, Color.ORANGE, NetworkElementType.CELL);
+		if(mfmCell.getExpectedCellRange() > 0) {
+			short r1 = (short) (mfmCell.getExpectedCellRange() * 30);
+			siteX2 = (int) Math.round(siteX1 + r1 * Math.cos(bearing));
+			siteY2 = (int) Math.round(siteY1 + r1 * Math.sin(bearing));			
+			Shape ecrLine = new Line2D.Double(siteX1, siteY1, siteX2, siteY2);
+			paint(myMFMCanvas.getGraphics(), ecrLine, Color.BLACK, NetworkElementType.ECR);
+		}
 		myMFMCanvas.repaint();
 	}
-	
+
 	public void selectCell(Line2D line) {
-		paint(myMFMCanvas.getGraphics(), line, Color.GRAY);
-	}	
+		paint(myMFMCanvas.getGraphics(), line, Color.GRAY, NetworkElementType.CELL);
+	}
 
 	public void clearCanvas() {
 		Graphics2D ga = (Graphics2D) myMFMCanvas.getGraphics();
 		ga.setColor(this.getBackground());
 		ga.clearRect(0, 0, this.getWidth(), this.getHeight());
+		myMFMCanvas.repaint();
+	}
+
+	public void drawPoint(Point2D cp, Color color) {
+		Graphics2D ga = (Graphics2D) myMFMCanvas.getGraphics();
+		ga.setColor(this.getBackground());
+		Shape circle = new Ellipse2D.Float((float)cp.getX(), (float)cp.getY(),
+				10.0f, 8.0f);
+		paint(myMFMCanvas.getGraphics(), circle, color, NetworkElementType.INTERSECTION);
 		myMFMCanvas.repaint();
 	}
 }
