@@ -1,5 +1,7 @@
 package org.ieee.iwson2.mfm.model.networkelements;
 
+import java.util.Random;
+
 /**
  * 
  * @author prem

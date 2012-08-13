@@ -13,4 +13,6 @@ public interface DrawModel {
 	public void clearCells() throws Exception;
 
 	public void selectCells(final float x1, final float y1);
+
+	public void drawCellIntersection();
 }

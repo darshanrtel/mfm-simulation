@@ -13,6 +13,7 @@ import org.ieee.iwson2.mfm.controller.draw.DrawModel;
 import org.ieee.iwson2.mfm.controller.draw.DrawModelImpl;
 import org.ieee.iwson2.mfm.model.networkblueprint.NetworkBluePrint;
 import org.ieee.iwson2.mfm.model.networkblueprint.NetworkBluePrintImpl;
+import org.ieee.iwson2.mfm.model.networkelements.Cell;
 import org.ieee.iwson2.mfm.model.networkelements.SequenceGenerator;
 import org.ieee.iwson2.mfm.model.networkelements.Site;
 
@@ -52,6 +53,10 @@ public class MFMDrawController implements OperationChangeListener {
 	public void drawCells() throws Exception {
 		myNetworkBrush.drawCells();
 	}
+	
+	private void drawCellIntersection() {
+		myNetworkBrush.drawCellIntersection();		
+	}
 
 	private void clearNetwork() throws Exception {
 		myNetworkBrush.clearCells();
@@ -80,8 +85,9 @@ public class MFMDrawController implements OperationChangeListener {
 		if (myCurrent_Operation == Operation_States.CELLS) {
 			NetworkBluePrint myNetworkBluePrint = NetworkBluePrintImpl
 					.getNetWorkBluePrint();
-			if(myNetworkBluePrint.getCellsOfSites().size() >= 0) {
+			if (myNetworkBluePrint.getCellsOfSites().size() > 0) {
 				logger.debug("Cell already exists.  Not defining again!!!");
+				return;
 			}
 			for (Site singleSite : myNetworkBluePrint.getSitesWithCoOrdinates()) {
 				final int totalCells = 1 + (new Random()
@@ -96,6 +102,19 @@ public class MFMDrawController implements OperationChangeListener {
 				}
 			}
 			logger.debug("Cells added...");
+		}
+	}
+
+	private synchronized void configureECR() {
+		if (myCurrent_Operation == Operation_States.ECR) {
+			NetworkBluePrint myNetworkBluePrint = NetworkBluePrintImpl
+					.getNetWorkBluePrint();
+			for (Cell singleCell : myNetworkBluePrint.getCellsOfSites()) {
+				final short expectedCellRange = (short) (new Random()
+						.nextInt(5));
+				singleCell.setExpectedCellRange(expectedCellRange);
+			}
+			logger.debug("ECR Configured...");
 		}
 	}
 
@@ -141,6 +160,10 @@ public class MFMDrawController implements OperationChangeListener {
 		case SITES:
 			logger.debug("SITES");
 			break;
+		case ECR:
+			logger.debug("ECR");
+			configureECR();
+			break;
 		case CLEAR:
 			logger.debug("CLEAR");
 			try {
@@ -163,13 +186,17 @@ public class MFMDrawController implements OperationChangeListener {
 			return;
 		}
 		switch (myCurrent_Operation) {
-		case CELLS:
-			logger.debug("Creating Cells");
-			drawCells();
-			break;
+		case ECR:
+			// 
 		case SITES:
-			logger.debug("Creating Sites");
+			// logger.debug("Creating Sites");
+			// drawSites();
+			// break;//Since both can be drawn
+		case CELLS:
+			logger.debug("Drawing Sites & Cells with ECR");
+			drawCells(); //With ECR
 			drawSites();
+			drawCellIntersection();
 			break;
 		case CLEAR:
 			clearNetwork();
@@ -180,7 +207,7 @@ public class MFMDrawController implements OperationChangeListener {
 	}
 
 	public void selectNetwork(final float x1, final float y1) {
-		if(myCurrent_Operation == Operation_States.CELLS){
+		if (myCurrent_Operation == Operation_States.CELLS) {
 			myNetworkBrush.selectCells(x1, y1);
 		}
 	}
