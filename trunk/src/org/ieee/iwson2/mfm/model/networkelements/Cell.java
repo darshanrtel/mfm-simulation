@@ -9,7 +9,7 @@ import java.util.Random;
  */
 public class Cell implements NetworkElement {
 	int mySiteid, myCellid;
-	short myBearing;
+	short myBearing, myPCI;
 
 	short myExpectedCellRange;
 
@@ -34,5 +34,9 @@ public class Cell implements NetworkElement {
 	
 	public short getMyBearing() {
 		return myBearing;
-	}	
+	}
+
+	public void setPCI(final short pciValue) {
+		this.myPCI = pciValue;
+	}
 }

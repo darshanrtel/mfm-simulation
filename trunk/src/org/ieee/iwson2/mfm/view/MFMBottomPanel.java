@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import org.apache.log4j.Logger;
+import org.ieee.iwson2.mfm.algorithm.MFMAlgorithmController;
 import org.ieee.iwson2.mfm.controller.MFMDrawController;
 
 /**
@@ -44,11 +45,12 @@ public class MFMBottomPanel extends JPanel {
 		this.add(pauseProgressButton);
 		this.add(exitButton);
 		this.add(about);
-		init_ActionListeners(exitButton, loadButton, about);
+		init_ActionListeners(exitButton, loadButton, startButton, about);
 	}
 
 	private void init_ActionListeners(final JButton exitButton,
-			final JButton loadButton, final JButton about) {
+			final JButton loadButton, final JButton startButton,
+			final JButton about) {
 		exitButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -76,6 +78,14 @@ public class MFMBottomPanel extends JPanel {
 				MFMDrawController mfmController = MFMDrawController
 						.getDrawController();
 				mfmController.showHelp();
+			}
+		});
+		startButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MFMAlgorithmController mfmAlgorithmController = MFMAlgorithmController
+						.getMFMAlgorithmController();
+				mfmAlgorithmController.assignPCIs();
 			}
 		});
 	}
