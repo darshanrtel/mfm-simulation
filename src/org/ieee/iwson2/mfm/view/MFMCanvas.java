@@ -91,7 +91,7 @@ public class MFMCanvas extends Canvas {
 		} else if (requestedShape instanceof Line2D) {
 			if(drawType == NetworkElementType.CELL) {
 				ga.setStroke(new BasicStroke(CELL_LINE_WIDTH)); // line thickness
-			} else {
+			} else if (drawType == NetworkElementType.ECR) {
 				ga.setStroke(new BasicStroke(2)); // line thickness
 			}
 			ga.drawLine((int) ((Line2D) requestedShape).getX1(),
@@ -146,12 +146,12 @@ public class MFMCanvas extends Canvas {
 		myMFMCanvas.repaint();
 	}
 
-	public void drawPoint(Point2D cp, Color color) {
+/*	public void drawPoint(Point2D cp, Color color) {
 		Graphics2D ga = (Graphics2D) myMFMCanvas.getGraphics();
 		ga.setColor(this.getBackground());
 		Shape circle = new Ellipse2D.Float((float)cp.getX(), (float)cp.getY(),
 				10.0f, 8.0f);
 		paint(myMFMCanvas.getGraphics(), circle, color, NetworkElementType.INTERSECTION);
 		myMFMCanvas.repaint();
-	}
+	}*/
 }
