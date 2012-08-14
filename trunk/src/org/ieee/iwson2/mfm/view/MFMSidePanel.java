@@ -24,7 +24,7 @@ public class MFMSidePanel extends JPanel implements OperationStates {
 		this.setLayout(new GridLayout(7, 1));
 		JButton siteButton = new JButton("Define Sites");
 		JButton cellButton = new JButton("Define Cells");
-		JButton showCellECR = new JButton("Show Cell ECR");
+		JButton showCellECR = new JButton("Define Cell ECR");
 		JButton pauseProgressButton = new JButton("Forbid PCI");
 		JButton exitButton = new JButton("Forbid PRACH");
 		JButton showRepelFactor = new JButton("Show Repel factor");

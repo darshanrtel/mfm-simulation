@@ -110,9 +110,10 @@ public class MFMDrawController implements OperationChangeListener {
 			NetworkBluePrint myNetworkBluePrint = NetworkBluePrintImpl
 					.getNetWorkBluePrint();
 			for (Cell singleCell : myNetworkBluePrint.getCellsOfSites()) {
-				final short expectedCellRange = (short) (new Random()
-						.nextInt(5));
-				singleCell.setExpectedCellRange(expectedCellRange);
+				short expectedCellRange = (short) (new Random()
+						.nextInt(3));
+				expectedCellRange += 2; //To avoid zeros
+				singleCell.setExpectedCellRange(expectedCellRange); 
 			}
 			logger.debug("ECR Configured...");
 		}
