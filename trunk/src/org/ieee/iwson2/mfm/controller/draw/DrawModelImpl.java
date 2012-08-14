@@ -65,7 +65,15 @@ public class DrawModelImpl implements DrawModel {
 		for (Line2D line : lines) {
 			for (Line2D secondline : lines) {
 				if (lineIntersection(line, secondline, alreadyCheckedPairs)) {
-					// Do something
+					System.out.println("Co-ordinate of line1 : "
+							+ line.getX1() + "," + line.getY1() + ":"
+							+ line.getX2() + "," + line.getY2());
+					System.out.println("Co-ordinate of line2 : "
+							+ secondline.getX1() + "," + secondline.getY1() + ":"
+							+ secondline.getX2() + "," + secondline.getY2());
+					System.out.println("Intersection of line : "
+							+ line.intersectsLine(secondline));
+					System.out.println("Lines Intersect : true");
 				}
 			}
 		}
@@ -81,25 +89,25 @@ public class DrawModelImpl implements DrawModel {
 		interSectionStatus = Line2D.linesIntersect(line1.getX1(),
 				line1.getY1(), line1.getX2(), line1.getY2(), line2.getX1(),
 				line2.getY1(), line2.getX2(), line2.getY2());
-		if (interSectionStatus) {
-			System.out
-					.println("Co-ordinate of line1 : " + line1.getX1() + ","
-							+ line1.getY1() + ":" + line1.getX2() + ","
-							+ line1.getY2());
-			System.out
-					.println("Co-ordinate of line2 : " + line2.getX1() + ","
-							+ line2.getY1() + ":" + line2.getX2() + ","
-							+ line2.getY2());
-			System.out.println("Intersection of line : "
-					+ line1.intersectsLine(line2));
-			System.out.println("Lines Intersect : " + interSectionStatus);
-		}
 		return interSectionStatus;
 	}
 
 	private boolean isLineChecked(final Line2D line1, final Line2D line2,
 			final List<List<Integer>> alreadyCheckedPairs) {
 		boolean isPairAlreadyChecked = false;
+		// check if they are same lines
+		if (line1.getX1() == line2.getX1() && line1.getY1() == line2.getY1()
+				&& line1.getX2() == line2.getX2()
+				&& line1.getY2() == line2.getY2()) {
+			return true;
+		}
+		// check if the X-Coordinates are same
+		// FIXME: Currently strong assumption same site cells don't repel
+		// if (line1.getX1() == line2.getX1() && line1.getY1() == line2.getY1())
+		// {
+		// return true;
+		// }
+
 		// check for existence of the pairs
 		for (List<Integer> linePair : alreadyCheckedPairs) {
 			if (linePair.contains(line1.hashCode())

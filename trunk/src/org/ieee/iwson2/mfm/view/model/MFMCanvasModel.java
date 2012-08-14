@@ -30,32 +30,37 @@ public class MFMCanvasModel {
 		return mfmCanvasModel;
 	}
 
-	public List<Line2D> getMyCellLines(final NetworkElementType drawType) {
+	public synchronized List<Line2D> getMyCellLines(final NetworkElementType drawType) {
 		return myCellLines.get(drawType);
 	}
 
-	public Set<Ellipse2D> getMySiteCircles() {
+	public synchronized Set<Ellipse2D> getMySiteCircles() {
 		return mySiteCircles;
 	}
 
-	public void setMyCellLines(final Line2D line, NetworkElementType drawType) {
+	public synchronized void setMyCellLines(final Line2D line, NetworkElementType drawType) {
 		ArrayList<Line2D> netWorkSet = myCellLines.get(drawType);
 		if (netWorkSet == null) {
 			netWorkSet = new ArrayList<Line2D>();
 		}
-		netWorkSet.add(line);
-		myCellLines.put(drawType, netWorkSet);
+		if(!netWorkSet.equals(line)) { //FIXME: Implement equals to avoid duplication
+			netWorkSet.add(line);
+			myCellLines.put(drawType, netWorkSet);			
+		}
 	}
 
-	public void setMySiteCircles(final Ellipse2D circle) {
+	public synchronized void setMySiteCircles(final Ellipse2D circle) {
 		mySiteCircles.add(circle);
 	}
 
-	public void clearCells() {
-		myCellLines.clear();
+	public synchronized void clearCells() {
+		myCellLines.clear(); //FIXME:clear is removing all the elements from the enum map!!!
+		for(NetworkElementType neType:myCellLines.keySet()) { //get all the enums and clear
+			myCellLines.remove(neType);
+		}
 	}
 
-	public void clearSites() {
+	public synchronized void clearSites() {
 		mySiteCircles.clear();
 	}
 }
