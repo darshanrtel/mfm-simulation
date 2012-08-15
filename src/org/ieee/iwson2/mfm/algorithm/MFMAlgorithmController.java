@@ -36,9 +36,11 @@ public class MFMAlgorithmController {
 
         final MfmCellCollection cellController = new MfmCellCollection(cells);
         printCells(cellController);
-        final MfmBasedAlgorithm algorithm = new MfmBasedAlgorithm(cellController);
+        AlgorithmLogContainer algorithmLogContainer = new AlgorithmLogContainer();
+        final MfmBasedAlgorithm algorithm = new MfmBasedAlgorithm(cellController, algorithmLogContainer);
         algorithm.execute();
         printCells(cellController);
+        algorithmLogContainer.createXmlFile();
     }
 
     private static void printCells(final MfmCellCollection cellController) {

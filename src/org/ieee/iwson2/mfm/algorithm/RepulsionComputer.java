@@ -18,14 +18,18 @@ public class RepulsionComputer {
     private static final int REPUSLION_FACTOR_DUE_TO_REUSE_DISTANCE = 8000;
     private static final int REPUSLION_FACTOR_DUE_TO_MOD_THREE = 1000;
 
-    public static int computeRepulsionInTheSystem(final List<Cell> cells) {
+    public static int computeRepulsionInTheSystem(final List<Cell> cells,
+            final AlgorithmLogContainer algorithmLogContainer) {
         int rSystem = 0;
         for (final Cell cell : cells) {
             final int repulsionDueToCollision = computeRepulsionDueToCollision(cell);
             final int replusionDueToConfusion = computeRepulsionDueToConfusion(cell);
             final int replusionDueToReuseDistance = computeRepulsionDueToReuseDistance(cell, cells);
             final int replusionDueToMod3 = computeRepulsionDueToModuloThreeRule(cell, cells);
-            rSystem += (repulsionDueToCollision + replusionDueToConfusion + replusionDueToReuseDistance + replusionDueToMod3);
+            final int replusionExperiencedPerCell = repulsionDueToCollision + replusionDueToConfusion
+                    + replusionDueToReuseDistance + replusionDueToMod3;
+            algorithmLogContainer.logCellReplusion(cell, replusionExperiencedPerCell);
+            rSystem += replusionExperiencedPerCell;
         }
         return rSystem;
     }
@@ -72,7 +76,7 @@ public class RepulsionComputer {
     private static int computeRepulsionDueToConfusion(final Cell cell) {
         final List<Cell> neighbors = cell.getNeighbors();
         int repulsionDueToConfusion = 0;
-        List<Cell> consideredCells = new ArrayList<Cell>();
+        final List<Cell> consideredCells = new ArrayList<Cell>();
         for (final Cell neighbor : neighbors) {
             final List<Cell> secondLevelNeighbors = neighbor.getNeighbors();
             for (final Cell secondLevelNeighbor : secondLevelNeighbors) {
