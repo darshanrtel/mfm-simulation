@@ -17,14 +17,20 @@ public class MfmBasedAlgorithm {
 
     private final MfmCellCollection myCellController;
     private final Random myRandom;
+    private final AlgorithmLogContainer myAlgorithmLogContainer;
 
-    public MfmBasedAlgorithm(final MfmCellCollection cellController) {
+    public MfmBasedAlgorithm(final MfmCellCollection cellController,
+            final AlgorithmLogContainer algorithmLogContainer) {
         myCellController = cellController;
+        myAlgorithmLogContainer = algorithmLogContainer;
         myRandom = new Random();
     }
 
     public void execute() {
-        int rSystem = RepulsionComputer.computeRepulsionInTheSystem(myCellController.getCells());
+        int iterationId = 0;
+        int rSystem = RepulsionComputer.computeRepulsionInTheSystem(myCellController.getCells(),
+                myAlgorithmLogContainer);
+        myAlgorithmLogContainer.logIterationRepulsion(iterationId, rSystem);
         final Map<Integer, List<Cell>> parentCellMap = myCellController.getParentCellMap();
         final List<Integer> parentList = new ArrayList<Integer>(parentCellMap.keySet());
         final TimerThread timer = startTimer();
@@ -32,7 +38,16 @@ public class MfmBasedAlgorithm {
             if (rSystem <= 0) {
                 break;
             }
-            rSystem = modifyPciAndCalculateRSystem(parentList, parentCellMap, rSystem);
+
+            int rNew = modifyPciAndCalculateRSystem(parentList, parentCellMap, rSystem);
+            if (rSystem != rNew) {
+                iterationId++;
+                myAlgorithmLogContainer.logIterationRepulsion(iterationId, rNew);
+            } else {
+                myAlgorithmLogContainer.clearCellLogging();
+            }
+            // TODO: If rnew is less than r system then revert modified PCIs
+            rSystem = rNew;
         }
     }
 
@@ -51,7 +66,7 @@ public class MfmBasedAlgorithm {
             }
         }
         if (isChanged) {
-            return RepulsionComputer.computeRepulsionInTheSystem(allCells);
+            return RepulsionComputer.computeRepulsionInTheSystem(allCells, myAlgorithmLogContainer);
         }
         return rSystem;
     }

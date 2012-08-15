@@ -25,7 +25,7 @@ public class MFMDrawController implements OperationChangeListener {
     private static MFMDrawController mfmDrawController = null;
     public Operation_States myCurrent_Operation;
     private DrawModel myNetworkBrush = new DrawModelImpl();
-    private short NO_OF_SECTORS_PER_SITE = 4;
+    private short NO_OF_SECTORS_PER_SITE = 3;
 
     public Operation_States getMyCurrent_Operation() {
         return myCurrent_Operation;
