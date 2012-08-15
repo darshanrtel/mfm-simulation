@@ -107,7 +107,7 @@ public class MFMCanvas extends Canvas {
 		if (null == myMFMCanvas) {
 			throw new Exception("Canvas not ready!!!");
 		}
-		Site site = NetworkBluePrintImpl.getNetWorkBluePrint().searchSite(
+		Site site = NetworkBluePrintImpl.getInstance().searchSite(
 				mfmCell.getSiteId());
 		if (null == site) {
 			throw new Exception("Site not found!!!");

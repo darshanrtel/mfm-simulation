@@ -12,7 +12,7 @@ public class MFMCanvasMouseListener extends MouseAdapter implements
 		MouseMotionListener {
 	public MFMCanvas canvas;
 	private JLabel coords;
-	private float x1, y1;
+	private int x1, y1;
 
 	public MFMCanvasMouseListener(final MFMCanvas canvas, final JLabel coords) {
 		super();

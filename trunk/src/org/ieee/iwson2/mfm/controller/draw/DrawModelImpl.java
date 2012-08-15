@@ -20,7 +20,7 @@ import org.ieee.iwson2.mfm.view.model.MFMCanvasModel;
  */
 public class DrawModelImpl implements DrawModel {
 	NetworkBluePrint myNetworkBluePrint = NetworkBluePrintImpl
-			.getNetWorkBluePrint();
+			.getInstance();
 	private MFMCanvas myCanvas;
 
 	public DrawModelImpl() {
