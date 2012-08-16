@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import org.apache.log4j.Logger;
 import org.ieee.iwson2.mfm.algorithm.MFMAlgorithmController;
 import org.ieee.iwson2.mfm.controller.MFMDrawController;
+import org.ieee.iwson2.mfm.view.showprogress.ShowProgressActionListener;
 
 /**
  * 
@@ -36,6 +37,7 @@ public class MFMBottomPanel extends JPanel {
 		JButton loadButton = new JButton("Load Network");
 		JButton startButton = new JButton("Start MFM");
 		JButton showProgressButton = new JButton("Show Progress");
+		showProgressButton.addActionListener(new ShowProgressActionListener());
 		JButton pauseProgressButton = new JButton("Pause/Continue");
 		JButton exitButton = new JButton("Exit");
 		JButton about = new JButton("About");
@@ -45,6 +47,7 @@ public class MFMBottomPanel extends JPanel {
 		this.add(pauseProgressButton);
 		this.add(exitButton);
 		this.add(about);
+		
 		init_ActionListeners(exitButton, loadButton, startButton, about);
 	}
 
