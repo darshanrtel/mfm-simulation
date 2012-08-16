@@ -1,0 +1,42 @@
+<Iterations>
+<Iteration name= "Iteration0" total-replusion="8000">
+<Cell name= "CELL-0[[189, 274]-67]" cell-replusion="1000"/>
+<Cell name= "CELL-1[[189, 274]-440]" cell-replusion="1000"/>
+<Cell name= "CELL-2[[274, 206]-426]" cell-replusion="1000"/>
+<Cell name= "CELL-3[[274, 206]-288]" cell-replusion="1000"/>
+<Cell name= "CELL-4[[274, 206]-337]" cell-replusion="1000"/>
+<Cell name= "CELL-5[[337, 297]-61]" cell-replusion="1000"/>
+<Cell name= "CELL-6[[337, 297]-103]" cell-replusion="1000"/>
+<Cell name= "CELL-7[[337, 297]-418]" cell-replusion="1000"/>
+</Iteration>
+<Iteration name= "Iteration1" total-replusion="5000">
+<Cell name= "CELL-0[[189, 274]-67]" cell-replusion="1000"/>
+<Cell name= "CELL-1[[189, 274]-440]" cell-replusion="1000"/>
+<Cell name= "CELL-2[[274, 206]-289]" cell-replusion="0"/>
+<Cell name= "CELL-3[[274, 206]-288]" cell-replusion="0"/>
+<Cell name= "CELL-4[[274, 206]-290]" cell-replusion="0"/>
+<Cell name= "CELL-5[[337, 297]-61]" cell-replusion="1000"/>
+<Cell name= "CELL-6[[337, 297]-103]" cell-replusion="1000"/>
+<Cell name= "CELL-7[[337, 297]-418]" cell-replusion="1000"/>
+</Iteration>
+<Iteration name= "Iteration2" total-replusion="3000">
+<Cell name= "CELL-0[[189, 274]-438]" cell-replusion="0"/>
+<Cell name= "CELL-1[[189, 274]-439]" cell-replusion="0"/>
+<Cell name= "CELL-2[[274, 206]-289]" cell-replusion="0"/>
+<Cell name= "CELL-3[[274, 206]-288]" cell-replusion="0"/>
+<Cell name= "CELL-4[[274, 206]-290]" cell-replusion="0"/>
+<Cell name= "CELL-5[[337, 297]-61]" cell-replusion="1000"/>
+<Cell name= "CELL-6[[337, 297]-103]" cell-replusion="1000"/>
+<Cell name= "CELL-7[[337, 297]-418]" cell-replusion="1000"/>
+</Iteration>
+<Iteration name= "Iteration3" total-replusion="0">
+<Cell name= "CELL-0[[189, 274]-438]" cell-replusion="0"/>
+<Cell name= "CELL-1[[189, 274]-439]" cell-replusion="0"/>
+<Cell name= "CELL-2[[274, 206]-289]" cell-replusion="0"/>
+<Cell name= "CELL-3[[274, 206]-288]" cell-replusion="0"/>
+<Cell name= "CELL-4[[274, 206]-290]" cell-replusion="0"/>
+<Cell name= "CELL-5[[337, 297]-102]" cell-replusion="0"/>
+<Cell name= "CELL-6[[337, 297]-103]" cell-replusion="0"/>
+<Cell name= "CELL-7[[337, 297]-104]" cell-replusion="0"/>
+</Iteration>
+</Iterations>
