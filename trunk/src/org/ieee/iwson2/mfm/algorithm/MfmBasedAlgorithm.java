@@ -11,7 +11,7 @@ import java.util.Random;
 import org.ieee.iwson2.mfm.model.networkelements.Cell;
 
 /**
- * @author darr
+ * @author Darshan
  */
 public class MfmBasedAlgorithm {
 

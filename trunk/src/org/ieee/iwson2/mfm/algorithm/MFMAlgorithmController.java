@@ -10,7 +10,7 @@ import org.ieee.iwson2.mfm.model.networkelements.Cell;
 import org.ieee.iwson2.mfm.view.MFMBottomPanel;
 
 /**
- * @author z000dgeo
+ * @author prem
  */
 // TODO: Candidate for spring
 public class MFMAlgorithmController {

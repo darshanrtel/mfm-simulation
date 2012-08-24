@@ -4,7 +4,7 @@
 package org.ieee.iwson2.mfm.algorithm;
 
 /**
- * @author darr
+ * @author Darshan
  */
 public class TimerThread extends Thread {
 
