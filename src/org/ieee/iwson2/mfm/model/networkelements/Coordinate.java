@@ -6,7 +6,7 @@ package org.ieee.iwson2.mfm.model.networkelements;
 import java.awt.Point;
 
 /**
- * @author darr
+ * @author Darshan
  */
 public class Coordinate {
     public int x;
