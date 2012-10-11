@@ -1,3 +1,4 @@
+#summary Frequently asked questions
 = Frequently asked questions =
 
 1)  Does it work on ubuntu 12.04?
